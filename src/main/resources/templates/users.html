@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+
+<div th:if="${role == 'admin'}">
+    <h2>This is the admin area</h2>
+    <ul>
+        <li  th:each="user: ${users}" th:text="${user}"></li>
+    </ul>
+</div>
+<div th:if="${role != 'admin'}">
+    <h2>This isn't the admin area</h2>
+</div>
+
+</body>
+</html>
