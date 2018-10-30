@@ -13,25 +13,42 @@ import java.util.Random;
 public class RollDiceController {
 
     @GetMapping("/roll-dice")
+    @ResponseBody //use response body to render information in the controller
+    public String showDice(){
+        /**
+         * Send user to pick a number between 1 and 6 on the roll-dice page that has links.
+         */
+
+        return "Pick a number. <br/><ul>" +
+                    "<li><a href='/roll-dice/1'>1</a></li>"+
+                    "<li><a href='/roll-dice/2'>2</a></li>"+
+                    "<li><a href='/roll-dice/3'>3</a></li>"+
+                    "<li><a href='/roll-dice/4'>4</a></li>"+
+                    "<li><a href='/roll-dice/5'>5</a></li>"+
+                    "<li><a href='/roll-dice/6'>6</a></li>"+
+                "</ul>";
+    }
+
+    @GetMapping("/roll-dice/{n}")
     @ResponseBody
-    public String pickNumber(){
-        return "Pick a number";
-    }
+    public String guessNumber(@PathVariable int n){
+/**
+ * 1) Use a method to randomly generate an integer that has a maximum number of 6.
+ * 2) Set the maximum and minimum parameters the user can guess from. this will be used as the range of the random number.
+ * 3) Create a path to pass the variable number that is received from the user picking a link on /roll-dice
+ */
+        int result = new Random().nextInt(6)+1;
 
-    @GetMapping("/roll-dice/{number}")
-    public String guessNumber(@PathVariable int number, Model viewNumber){
-
-        Random result = new Random();
-        int value = result.nextInt(6)+1;
-
-        viewNumber.addAttribute("number",number);
-        viewNumber.addAttribute("value", value);
-
-        if(number == value){
-            return "Your number "+ number + " matches the random number: "+ value;
+        if(n == result){
+            return "Your number "+ n + " matches the random number: "+ result;
         }else {
-            return "Your number "+ number + " didn't match the random number: "+value;
+            return "Your number "+ n + " didn't match the random number: "+result;
         }
+//        viewNumber.addAttribute("number",n);
+//        viewNumber.addAttribute("result", result);
+
     }
+
+
 
 }
