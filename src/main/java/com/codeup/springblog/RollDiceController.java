@@ -13,7 +13,7 @@ import java.util.Random;
 public class RollDiceController {
 
     @GetMapping("/roll-dice")
-    @ResponseBody //use response body to render information in the controller
+    @ResponseBody //use response body to render a literal string of information in the controller
     public String showDice(){
         /**
          * Send user to pick a number between 1 and 6 on the roll-dice page that has links.
