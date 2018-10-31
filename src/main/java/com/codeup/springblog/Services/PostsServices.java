@@ -40,7 +40,7 @@ public class PostsServices {
      *
      */
 
-    public Post add(Post post){
+    public Post save(Post post){
         post.setId(posts.size()+1);
         posts.add(post);
         return post;
@@ -53,12 +53,16 @@ public class PostsServices {
      * these posts could be added directly into the constructor instead of the createPosts method.
      */
     private void createPosts(){
-        this.add(new Post("My First Post", "I'm sick of this shit"));
-        this.add(new Post("A good day", "to learn code"));
-        this.add(new Post("A bad day", "to learn code on an empty stomach"));
+        this.save(new Post("My First Post", "I'm sick of this shit"));
+        this.save(new Post("A good day", "to learn code"));
+        this.save(new Post("A bad day", "to learn code on an empty stomach"));
 
     }
 
+    public Post update(Post post){
+       return posts.set((int)post.getId()-1, post);
+
+    }
 
 }
 

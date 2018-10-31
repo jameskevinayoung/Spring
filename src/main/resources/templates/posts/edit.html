@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: head"></head>
+
+<body>
+<div th:replace="fragments/navbar :: myNav"></div>
+
+<!--th:object required if using form-binding and only works withing the scope of its use-->
+<form th:action="@{/posts/{id}/edit(id=${post.id})}" method="post" th:object="${post}">
+
+    Title:
+                    <!--this structure only happens in the field-->
+    <input th:field="*{title}" />
+    <br />
+    Description:
+    <input th:field="*{body}" />
+    <br />
+
+    <input type="submit" />
+</form>
+
+
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>
