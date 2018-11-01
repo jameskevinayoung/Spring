@@ -1,4 +1,4 @@
-package com.codeup.springblog;
+package com.codeup.springblog.Services;
 
 import org.springframework.data.repository.CrudRepository ;
 import org.springframework.stereotype.Repository;

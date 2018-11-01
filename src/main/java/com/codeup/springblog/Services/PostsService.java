@@ -1,8 +1,5 @@
 package com.codeup.springblog.Services;
 
-import com.codeup.springblog.Post;
-import com.codeup.springblog.PostsRepository;
-import javafx.geometry.Pos;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

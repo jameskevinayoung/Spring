@@ -1,6 +1,6 @@
 package com.codeup.springblog.controllers;
 
-import com.codeup.springblog.Post;
+import com.codeup.springblog.Services.Post;
 import com.codeup.springblog.Services.PostsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-public class PostController {
+public class PostsController {
 
 
                     /**------------------------------------------------------------**\
@@ -33,7 +33,7 @@ public class PostController {
                 | This is called  or passing things into the constructor of an object.          |
                 /**___________________________________________________________________________**/
     @Autowired
-    public PostController(PostsService postSvc){
+    public PostsController(PostsService postSvc){
         this.postSvc = postSvc;
     }
 //--------------------------------------- MAPPING TO THE VIEWER ---------------------------------------\\
