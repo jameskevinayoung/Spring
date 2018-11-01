@@ -1,7 +1,9 @@
 package com.codeup.springblog.Services;
-import com.codeup.springblog.Repository.PostsRepository;
+
+import com.codeup.springblog.Post;
+import com.codeup.springblog.PostsRepository;
 import org.springframework.stereotype.Service;
-import java.util.ArrayList;
+
 import java.util.List;
 
 
@@ -10,7 +12,7 @@ import java.util.List;
 // and the templates to handle functionality.
 
 @Service
-public class PostsServices {
+public class PostsService {
 
 
 
@@ -20,7 +22,7 @@ public class PostsServices {
 
     private PostsRepository postsRepo;
 
-    public PostsServices(PostsRepository postsRepo){
+    public PostsService(PostsRepository postsRepo){
         this.postsRepo =postsRepo;
     }
 
@@ -49,8 +51,9 @@ public class PostsServices {
 
 
     //SEARCH THROUGH THE DATABASE OF POSTS, FIND ALL POSTS WITH A SPECIFIC TERM IN EITHER THE TITLE OR BODY
-    public List<Post> search(String term) {
-        return postsRepo.findAllByTitleOrBodyContains(term);
+    public List<Post> search(String term, String term2) {
+        return postsRepo.findAllByTitleContainsOrBodyContains(term, term2);
+//        return null;
     }
 
 //    public List<Post> search(String term) {

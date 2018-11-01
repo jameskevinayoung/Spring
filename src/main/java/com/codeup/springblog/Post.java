@@ -1,4 +1,4 @@
-package com.codeup.springblog.Services;
+package com.codeup.springblog;
 
 import javax.persistence.*;
 
@@ -10,7 +10,7 @@ public class Post {
 //----------------------------------- ANNOTATIONS FOR DATABASE TABLE -----------------------------------\\
 
     @Id @GeneratedValue
-    private long id;
+    private int id;
 
     @Column(nullable = false, length = 100)
     private String title;
@@ -30,7 +30,7 @@ public class Post {
         this.title=title;
         this.body = body;
     }
-    public Post(long id, String title, String body){
+    public Post(int id, String title, String body){
         this.id = id;
         this.title=title;
         this.body = body;
@@ -50,7 +50,7 @@ public class Post {
         return body;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
@@ -62,7 +62,7 @@ public class Post {
         this.body = body;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

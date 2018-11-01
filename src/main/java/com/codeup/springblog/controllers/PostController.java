@@ -1,7 +1,8 @@
 package com.codeup.springblog.controllers;
 
-import com.codeup.springblog.Services.Post;
-import com.codeup.springblog.Services.PostsServices;
+import com.codeup.springblog.Post;
+import com.codeup.springblog.Services.PostsService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -17,7 +18,7 @@ public class PostController {
                     |                                                                |
                     /**____________________________________________________________**/
 
-    private PostsServices postSvc;
+    private PostsService postSvc;
 
 
                 /**---------------------------------------------------------------------------**\
@@ -31,8 +32,8 @@ public class PostController {
                 |                                                                               |
                 | This is called  or passing things into the constructor of an object.          |
                 /**___________________________________________________________________________**/
-
-    public PostController(PostsServices postSvc){
+    @Autowired
+    public PostController(PostsService postSvc){
         this.postSvc = postSvc;
     }
 //--------------------------------------- MAPPING TO THE VIEWER ---------------------------------------\\
@@ -55,7 +56,7 @@ public class PostController {
 
     //Directs user to the form to create a new post object
     @GetMapping("/posts/create")
-    public String showAdForm(Model vModel) {
+    public String showForm(Model vModel) {
         vModel.addAttribute("post", new Post());
         return "posts/create";
     }
@@ -68,8 +69,8 @@ public class PostController {
     }
 
     //Finds a post id, redirects to the edit page
-    @GetMapping("/posts/{id}/edit")
     //to update the form you have to know which id (parameter) you are looking for
+    @GetMapping("/posts/{id}/edit")
     public String showUpdateForm(@PathVariable int id, Model viewModel){
         viewModel.addAttribute("post", postSvc.findIndividual(id));
         return "posts/edit";
@@ -83,8 +84,8 @@ public class PostController {
 
     //search for posts based on terms in title; refactor ability to search title or description
     @GetMapping("/ads/search/{term}")
-    public String showResults(@PathVariable String term, Model viewModel){
-        viewModel.addAttribute("posts",postSvc.search(term));
+    public String showResults(@PathVariable String term, String term2, Model viewModel){
+        viewModel.addAttribute("posts",postSvc.search(term, term2));
         return "ads/index";
     }
 
