@@ -19,6 +19,9 @@
 <div th:each="post : ${posts}">
     <h2 th:text="${post.title}"></h2>
     <p th:text="${post.body}"></p>
+    <form th:action="@{posts/{id}/delete(id=${post.id})}" method="post" th:object="${post}">
+        <input type="submit" value="Delete" />
+    </form>
 </div>
 
 <div th:replace="fragments/footer :: footer"></div>

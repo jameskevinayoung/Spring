@@ -2,6 +2,7 @@ package com.codeup.springblog.Services;
 
 import com.codeup.springblog.Post;
 import com.codeup.springblog.PostsRepository;
+import javafx.geometry.Pos;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -53,9 +54,13 @@ public class PostsService {
     //SEARCH THROUGH THE DATABASE OF POSTS, FIND ALL POSTS WITH A SPECIFIC TERM IN EITHER THE TITLE OR BODY
     public List<Post> search(String term, String term2) {
         return postsRepo.findAllByTitleContainsOrBodyContains(term, term2);
-//        return null;
     }
 
+
+    public void delete(Post post){
+        postsRepo.delete(post);
+
+    }
 //    public List<Post> search(String term) {
 //        return postsRepo.findAllByTitle(term);
 //    }

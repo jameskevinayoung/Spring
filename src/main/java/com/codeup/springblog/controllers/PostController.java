@@ -90,6 +90,13 @@ public class PostController {
     }
 
 
+    @PostMapping("/posts/{id}/delete")
+    public String deletePost(@PathVariable int id){
+        Post post = postSvc.findIndividual(id);
+        postSvc.delete(post);
+        return "redirect:/posts/index";
+    }
+
 //--------------------------------------------- NOT USING A DATABASE -------------------------------------------------\\
 
 
