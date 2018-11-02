@@ -2,6 +2,8 @@ package com.codeup.springblog.controllers;
 
 import com.codeup.springblog.Services.Post;
 import com.codeup.springblog.Services.PostsService;
+import com.codeup.springblog.Services.User;
+import com.codeup.springblog.Services.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,7 +21,7 @@ public class PostsController {
                     /**____________________________________________________________**/
 
     private PostsService postSvc;
-
+    private UsersRepository usersRepo;
 
                 /**---------------------------------------------------------------------------**\
                 |                       Dependency Injection                                    |
@@ -33,8 +35,9 @@ public class PostsController {
                 | This is called  or passing things into the constructor of an object.          |
                 /**___________________________________________________________________________**/
     @Autowired
-    public PostsController(PostsService postSvc){
+    public PostsController(PostsService postSvc, UsersRepository usersRepo){
         this.postSvc = postSvc;
+        this.usersRepo = usersRepo;
     }
 //--------------------------------------- MAPPING TO THE VIEWER ---------------------------------------\\
 
@@ -96,6 +99,8 @@ public class PostsController {
         postSvc.delete(post);
         return "redirect:/posts/index";
     }
+
+
 
 //--------------------------------------------- NOT USING A DATABASE -------------------------------------------------\\
 

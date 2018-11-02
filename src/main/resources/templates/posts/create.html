@@ -8,6 +8,7 @@
 <!--th:object required if using form-binding and only works withing the scope of its use-->
 <form th:action="@{/posts/create}" method="post" th:object="${post}">
 
+
     Title:
     <!--this structure only happens in the field-->
     <input th:field="*{title}" />

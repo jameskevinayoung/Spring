@@ -18,6 +18,9 @@ public class Post {
     @Column(nullable = false)
     private String body;
 
+
+    @ManyToOne
+    private User user;
 //------------------------------------------------------------------------------------------------------\\
 
 
@@ -26,11 +29,13 @@ public class Post {
 
     public Post(){}
 
-    public Post(String title, String body){
-        this.title=title;
+    public Post(User user, String title, String body){
+        this.user = user;
+        this.title =title;
         this.body = body;
     }
-    public Post(int id, String title, String body){
+    public Post(int id, User user, String title, String body){
+        this.user = user;
         this.id = id;
         this.title=title;
         this.body = body;
@@ -66,6 +71,13 @@ public class Post {
         this.id = id;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 //------------------------------------------------------------------------------------------------------\\
 
 }
