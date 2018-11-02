@@ -53,10 +53,9 @@ public class PostsService {
         return postsRepo.findAllByTitleContainsOrBodyContains(term, term2);
     }
 
-
+    //TAKE A POST AS A PARAMETER, SEARCH THE REPO (DATABASE) AND DELETE THE POST
     public void delete(Post post){
         postsRepo.delete(post);
-
     }
 //    public List<Post> search(String term) {
 //        return postsRepo.findAllByTitle(term);

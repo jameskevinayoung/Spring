@@ -89,7 +89,7 @@ public class PostsController {
         return "ads/index";
     }
 
-
+    //find the post based on the id, then delete the post from the service, redirect the user to the home page
     @PostMapping("/posts/{id}/delete")
     public String deletePost(@PathVariable int id){
         Post post = postSvc.findIndividual(id);
