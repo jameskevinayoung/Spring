@@ -33,6 +33,18 @@
 
 <!--class example to use javascript/fetch with delete button -->
 <script>
+    // 1) create the delete button with an id tag and a hidden input element that gets the post's id
+    // 2) create the script element to add js
+    // 3) create a variable that queries the document and selects the button's id
+    // 4) create a variable that queries the document and selects the post's id
+    // 5) add an event listener to the button and select the event action (i.e. click, hover, double click) and event function
+    // 6) prevent the event from happening more than once
+    // 7) to add a prompt, create a variable and assign a confirm prompt to pass a message; which returns boolean (true/false)
+    // 8) if the user presses ok (true) then use the fetch/then method
+    // 9) in the fetch pass the url , and the method you are committing to (Post/Get)
+    //10) then take the result and get the json of it
+    //11) then take the result and redirect to the link location
+
     let deleted = document.querySelector("deletePost");
     let postId = document.querySelector("#postId").value;
 
