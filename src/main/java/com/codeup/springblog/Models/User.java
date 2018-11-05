@@ -1,4 +1,6 @@
-package com.codeup.springblog.Services;
+package com.codeup.springblog.Models;
+
+import com.codeup.springblog.Models.Post;
 
 import javax.persistence.*;
 import java.util.List;
@@ -46,11 +48,20 @@ public class User {
         this.password = password;
     }
 
-    public User (String username, String email, String password,List<Post> posts) {
+    public User (String username, String email, String password) {
         this.username = username;
         this.email = email;
         this.password = password;
-        this.posts = posts;
+    }
+
+
+//copy constructor; copy of the user class that will live in the session; copy the full constructor
+
+    public User(User copy) {
+        this.id = copy.id;
+        this.username = copy.username;
+        this.email = copy.email;
+        this.password = copy.password;
     }
 //------------------------------------------------------------------------------------------------------\\
 

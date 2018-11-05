@@ -1,10 +1,8 @@
 package com.codeup.springblog.controllers;
 
-import com.codeup.springblog.Services.Post;
+import com.codeup.springblog.Models.Post;
 import com.codeup.springblog.Services.PostsService;
-import com.codeup.springblog.Services.User;
 import com.codeup.springblog.Services.UsersRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -34,7 +32,7 @@ public class PostsController {
                 |                                                                               |
                 | This is called  or passing things into the constructor of an object.          |
                 /**___________________________________________________________________________**/
-    @Autowired
+
     public PostsController(PostsService postSvc, UsersRepository usersRepo){
         this.postSvc = postSvc;
         this.usersRepo = usersRepo;
@@ -51,7 +49,7 @@ public class PostsController {
 
     //Finds the post with a specific id and displays it
     @GetMapping("/posts/{id}")
-    public String individualAd(@PathVariable int id, Model vModel) {
+    public String individualPost(@PathVariable int id, Model vModel) {
         vModel.addAttribute("post", postSvc.findIndividual(id));
         return "posts/show";
     }
@@ -67,8 +65,9 @@ public class PostsController {
     //Takes the user's input, creates the post, adds it to the database, redirects the user to the singular post
     @PostMapping("/posts/create")
     public String createPost(@ModelAttribute Post post){
-        Post savedPost = postSvc.create(post);
-        return "redirect:/posts/" + savedPost.getId();
+        post.setUser(usersRepo.findOne(1));//set the user on the post by finding the id of the user in the repo
+        postSvc.create(post);
+        return "redirect:/posts/" + post.getId();
     }
 
     //Finds a post id, redirects to the edit page

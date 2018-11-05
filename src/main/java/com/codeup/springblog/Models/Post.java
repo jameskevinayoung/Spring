@@ -1,4 +1,4 @@
-package com.codeup.springblog.Services;
+package com.codeup.springblog.Models;
 
 import javax.persistence.*;
 
@@ -20,6 +20,7 @@ public class Post {
 
 
     @ManyToOne
+    @JoinColumn(name = "user_id")
     private User user;
 //------------------------------------------------------------------------------------------------------\\
 
@@ -29,13 +30,11 @@ public class Post {
 
     public Post(){}
 
-    public Post(User user, String title, String body){
-        this.user = user;
+    public Post(String title, String body){
         this.title =title;
         this.body = body;
     }
-    public Post(int id, User user, String title, String body){
-        this.user = user;
+    public Post(int id, String title, String body){
         this.id = id;
         this.title=title;
         this.body = body;

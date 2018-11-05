@@ -12,7 +12,9 @@
 <div>
     <h2 th:text="${post.title}"></h2>
     <p th:text="${post.body}"></p>
-    <h6 th:text="${user}"></h6>
+
+    <!--the post has the user object that contains the email property-->
+    <h6 th:text="${post.user.email}"></h6>
 </div>
 
 <div th:replace="fragments/footer :: footer"></div>
